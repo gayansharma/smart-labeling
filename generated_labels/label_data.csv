@@ -1,0 +1,3 @@
+Product Name,Batch Number,Product ID,Temperature (°C),Weight (g),Size,Status,Defect Info,Location,Operator ID,Description,Packaging,MFG Date,EXP Date,Notes
+Apples,235467,8901234567,15.0,0.0,,PASSED,NONE,,,,,09-06-2025,09-06-2025,
+Apples,235467,8901234567,15.0,1000.0,NORMAL,PASSED,NONE,KASHMIR,EY#003,Fresh apples from kashmir and handpicked,tray consisting of 6 apples,09-06-2025,09-06-2025,store it in cold and dry place
