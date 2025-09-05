@@ -3,11 +3,10 @@ import qrcode
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from datetime import datetime
+from PIL import Image
 import io
 
-# ------------------------
 # Streamlit UI
-# ------------------------
 st.set_page_config(page_title="Smart Labeling System", page_icon="📦", layout="centered")
 
 st.title("📦 Smart Labeling System (MVP)")
@@ -44,6 +43,9 @@ if st.button("Generate Label"):
         qr.save(qr_buffer, format="PNG")
         qr_buffer.seek(0)
 
+        # Convert BytesIO → PIL for ReportLab
+        qr_img = Image.open(qr_buffer)
+
         # ------------------------
         # Generate PDF
         # ------------------------
@@ -69,8 +71,8 @@ if st.button("Generate Label"):
         # Date & Time
         c.drawString(50, height - 300, f"Label Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
-        # QR Code
-        c.drawInlineImage(qr_buffer, width - 200, height - 300, 120, 120)
+        # ✅ Draw QR Code from PIL image
+        c.drawInlineImage(qr_img, width - 200, height - 300, 120, 120)
 
         c.save()
         pdf_buffer.seek(0)
